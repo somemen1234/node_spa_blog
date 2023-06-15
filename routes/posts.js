@@ -18,7 +18,7 @@ const checkObjectId = (req, res, next) => {
 };
 
 router.get("/posts", async (_, res) => {
-  const posts = await Post.find({});
+  const posts = await Post.find({}).sort({ createdAt: -1 });
 
   const results = posts.map((post) => {
     return {
@@ -114,3 +114,4 @@ router.delete("/posts/:_postId", checkObjectId, async (req, res) => {
 });
 
 module.exports = router;
+// module.exports = { router, checkObjectId };

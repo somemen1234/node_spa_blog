@@ -30,7 +30,9 @@ router.get("/comments/:_postId", async (req, res) => {
   if (!ObjectId.isValid(_postId))
     return res.status(400).json({ success: false, message: "데이터 형식이 올바르지 않습니다." });
 
-  const findComments = await Comment.find({ _postId: new ObjectId(_postId) });
+  const findComments = await Comment.find({ _postId: new ObjectId(_postId) }).sort({
+    createdAt: -1,
+  });
 
   if (findComments.length === 0)
     return res.status(404).json({ success: false, message: "해당 게시글의 댓글이 없습니다." });
