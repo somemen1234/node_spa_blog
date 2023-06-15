@@ -1,3 +1,4 @@
+//몽구스를 이용해 몽고db와의 연결
 const mongoose = require("mongoose");
 
 const connect = () => {
